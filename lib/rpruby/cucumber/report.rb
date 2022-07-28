@@ -1,5 +1,5 @@
 require 'cucumber/formatter/io'
-require 'cucumber/formatter/hook_query_visitor'
+require 'cucumber/hooks'
 require 'tree'
 require 'securerandom'
 
@@ -209,7 +209,7 @@ module Rpruby
       end
 
       def step?(test_step)
-        !::Cucumber::Formatter::HookQueryVisitor.new(test_step).hook?
+        !::Cucumber::Hooks.new(test_step).hook?
       end
 
       def report_hierarchy?
